@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+screenshot.png
+screenshot_active.png
+screenshot.js
