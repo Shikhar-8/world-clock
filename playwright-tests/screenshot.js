@@ -1,33 +1,54 @@
 import { chromium } from 'playwright';
+import fs from 'fs';
 
 (async () => {
-  const browser = await chromium.launch();
+  const prefix = process.argv[2] || 'pre';
+  
+  if (!fs.existsSync(prefix)) {
+    fs.mkdirSync(prefix);
+  }
+
+  const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
-    viewport: { width: 390, height: 844 },
-    deviceScaleFactor: 3,
+    viewport: { width: 1200, height: 800 },
+    deviceScaleFactor: 1,
   });
   const page = await context.newPage();
   
   await page.goto('http://localhost:5173');
   await page.waitForTimeout(1000);
   
-  // Focus to trigger lazy-load of timezone data
+  // 1. Default Page Load
+  await page.screenshot({ path: `${prefix}/01_default.png`, fullPage: true });
+
+  // 2. Toggle Theme (Light Mode)
+  await page.click('.theme-switch');
+  await page.waitForTimeout(500); // transition
+  await page.screenshot({ path: `${prefix}/02_theme_light.png`, fullPage: true });
+
+  // 3. Toggle 24H Format
+  await page.click('#format-toggle');
+  await page.waitForTimeout(100);
+  await page.screenshot({ path: `${prefix}/03_format_24h.png`, fullPage: true });
+
+  // 4. Keyboard Navigation (Search "Lon", Down, Down)
   await page.focus('#city-input');
-  await page.waitForTimeout(1500); // Wait for the dynamic import to resolve
-  
-  // Type slowly to ensure event listeners catch it
-  await page.type('#city-input', 'Tokyo', { delay: 100 });
-  
-  // Wait for dropdown to populate
+  await page.waitForTimeout(1500); // Wait for dynamic import
+  await page.type('#city-input', 'Lon', { delay: 100 });
   await page.waitForSelector('.suggestion-item', { timeout: 10000 });
+  await page.waitForTimeout(500); // Let suggestions settle
   
-  // Click the first suggestion
-  await page.click('.suggestion-item');
-  
-  // Wait for the clock animation to spring up
-  await page.waitForTimeout(2000);
-  
-  await page.screenshot({ path: 'screenshot_active.png', fullPage: true });
+  await page.keyboard.press('ArrowDown');
+  await page.waitForTimeout(200);
+  await page.keyboard.press('ArrowDown');
+  await page.waitForTimeout(200);
+  await page.screenshot({ path: `${prefix}/04_keyboard_nav.png`, fullPage: true });
+
+  // 5. Select via Enter and render Clock
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(2000); // Wait for clock spring animation
+  await page.screenshot({ path: `${prefix}/05_clock_selected.png`, fullPage: true });
+
   await browser.close();
-  console.log('Screenshot saved to screenshot_active.png');
+  console.log(`Screenshots saved to ${prefix}/ directory.`);
 })();

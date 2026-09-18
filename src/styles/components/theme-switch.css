@@ -1,0 +1,74 @@
+/* Theme Switch Pill */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 30px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .theme-switch {
+    width: 48px;
+    height: 26px;
+  }
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  transition: .4s var(--ease-spring);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.slider.round {
+  border-radius: var(--radius-switch);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--color-text-primary);
+  border-radius: var(--radius-circle);
+  transition: .4s var(--ease-spring);
+  z-index: 2;
+}
+
+@media (max-width: 600px) {
+  .slider:before {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.theme-switch input:checked + .slider:before {
+  transform: translateX(26px);
+  background-color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+  .theme-switch input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+}
+
+.icon-sun, .icon-moon {
+  color: var(--color-text-muted);
+  z-index: 1;
+}

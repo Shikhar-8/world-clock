@@ -1,0 +1,49 @@
+:root {
+  /* Premium Dark Theme (Default) */
+  --color-bg-primary: #080808;
+  --color-text-primary: #f0f0f0;
+  --color-text-muted: #707070;
+  --color-text-dim: #999999;
+  --color-accent: #e8e8e8;
+  
+  --color-surface-primary: #141414;
+  --color-surface-input: #111111;
+  
+  --color-border-primary: #2a2a2a;
+  --color-border-input: #333333;
+  
+  --color-ad-bg: #0d0d0d;
+  
+  /* Contextual / Component-specific Colors */
+  --color-ghost-text: rgba(255, 255, 255, 0.02);
+  --color-search-focus-ring: rgba(232, 232, 232, 0.15);
+  
+  /* SEO Text Gradient (Backgrounds) */
+  --color-seo-gradient: linear-gradient(180deg, #999999 0%, #555555 100%);
+  --color-seo-text-fill: transparent;
+}
+
+body.light-mode {
+  /* Refined Warm White Theme */
+  --color-bg-primary: #faf8f5;
+  --color-text-primary: #1a1a1a;
+  --color-text-muted: #8c8279;
+  --color-text-dim: #8c8279;
+  --color-accent: #8B0000;
+  
+  --color-surface-primary: #f0ede8;
+  --color-surface-input: #f0ede8;
+  
+  --color-border-primary: #e2ded6;
+  --color-border-input: #d4d0c8;
+  
+  --color-ad-bg: #f0ede8;
+  
+  /* Contextual / Component-specific Colors */
+  --color-ghost-text: rgba(255, 255, 255, 0.02); /* Same as dark mode currently */
+  --color-search-focus-ring: rgba(139, 0, 0, 0.1);
+  
+  /* SEO Text Gradient (Backgrounds) */
+  --color-seo-gradient: none;
+  --color-seo-text-fill: var(--color-text-muted);
+}

@@ -1,0 +1,69 @@
+:root {
+  /* Easings */
+  --ease-spring: linear(
+    0, 0.416 12.5%, 0.741 24.3%, 0.954 36.3%, 1.056 46.5%, 
+    1.085 53.6%, 1.083 61.1%, 1.045 70%, 1.012 79.5%, 0.996 90.7%, 1
+  );
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Border Radii */
+  --radius-pill: 999px;
+  --radius-switch: 34px;
+  --radius-dropdown: 8px;
+  --radius-circle: 50%;
+
+  /* Layout Max Widths */
+  --layout-max-width-app: 1200px;
+  --layout-max-width-content: 800px;
+  --layout-max-width-ad: 728px;
+  --layout-max-width-footer: 600px;
+  --layout-max-width-search: 560px;
+
+  /* Spacing (Desktop First) */
+  --space-app-padding-y: 2rem;
+  --space-app-padding-x: 1.5rem;
+  
+  --space-content-gap: 4rem;
+  --space-header-mb: 4rem;
+  
+  --space-tray-gap: 0.75rem;
+  --space-format-btn-py: 0.4rem;
+  --space-format-btn-px: 0.7rem;
+  
+  --space-search-container-px: 1.25rem;
+  --space-search-input-p: 0.75rem;
+  --space-clear-btn-p: 0.5rem;
+  
+  --space-suggestion-py: 1rem;
+  --space-suggestion-px: 1.5rem;
+  
+  --space-city-mt: 2rem;
+  --space-time-gap: 1rem;
+  --space-date-mb: 0.5rem;
+  
+  --space-ad-mt: 4rem;
+  --space-ad-mb: 2rem;
+  
+  --space-footer-pt: 2rem;
+}
+
+@media (max-width: 600px) {
+  :root {
+    /* Responsive Spacing Overrides */
+    --space-app-padding-y: 1.5rem;
+    --space-app-padding-x: 1.25rem;
+    
+    --space-content-gap: 2rem;
+    --space-header-mb: 2rem;
+    
+    --space-tray-gap: 0.5rem;
+    --space-format-btn-py: 0.35rem;
+    --space-format-btn-px: 0.55rem;
+    
+    --space-city-mt: 1.25rem;
+    --space-time-gap: 0.25rem;
+    
+    --space-ad-mt: 2rem;
+    --space-footer-pt: 1.5rem;
+  }
+}
