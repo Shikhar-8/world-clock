@@ -1,7 +1,12 @@
 /**
  * Initializes the global parallax effect for the background ghost type
  * and the magnetic hover effect for the search container.
- * These effects only apply if the device supports fine pointers and hasn't requested reduced motion.
+ * 
+ * WHY: We use a magnetic hover effect to give the search bar a tactile, premium feel 
+ * that responds physically to the cursor. However, we explicitly gate this behind 
+ * `hasFinePointer` (to avoid attaching heavy mousemove listeners on touch devices 
+ * where they are useless) and `!isReducedMotion` (to respect OS accessibility 
+ * preferences for users with vestibular disorders).
  * 
  * @param ghostTypeEl The background ghost typography element
  * @param searchContainerEl The search input container element

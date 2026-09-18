@@ -4,12 +4,14 @@ import {
   getThemePreference, setThemePreference, 
   getTimeFormatPreference, setTimeFormatPreference 
 } from './lib/storage.ts';
+import { CSS_CLASSES, FORMAT_LABELS } from './lib/constants.ts';
 import { renderClock, showClockSection } from './ui/clock.ts';
 import { 
   renderSuggestions, updateActiveSuggestionUI, 
   clearSearchUI, toggleSearchDropdownUI 
 } from './ui/search.ts';
 import { initInteractions, initLoader, animateLogo } from './ui/interactions.ts';
+import { showToast } from './ui/toast.ts';
 
 // Element References
 const inputEl = document.getElementById('city-input') as HTMLInputElement;
@@ -46,6 +48,9 @@ function updateClockTick() {
     renderClock(timeDisplayEl, dateDisplayEl, cityNameEl, timeData, currentCity);
   } catch (e) {
     console.error("Timezone error:", e);
+    // CRITICAL FAILURE STATE: The clock crashed rendering. Show error toast.
+    showToast("Failed to calculate time for this city.", "error");
+    if (currentInterval) window.clearInterval(currentInterval);
   }
 }
 
@@ -75,6 +80,9 @@ inputEl.addEventListener('focus', async () => {
       cityTimezones = module.default || module;
     } catch (e) {
       console.error("Failed to load timezone data", e);
+      // CRITICAL FAILURE STATE: Database failed to load (network error). Show error toast.
+      showToast("Network error: Could not load city database.", "error");
+      isModuleLoading = false;
     }
   }
 });
@@ -106,7 +114,7 @@ inputEl.addEventListener('input', (e) => {
 });
 
 inputEl.addEventListener('keydown', (e) => {
-  if (suggestionsEl.classList.contains('hidden')) return;
+  if (suggestionsEl.classList.contains(CSS_CLASSES.HIDDEN)) return;
   
   if (e.key === 'ArrowDown') {
     e.preventDefault();
@@ -147,23 +155,23 @@ document.addEventListener('touchstart', closeSuggestions, { passive: true });
 
 // Initialize Theme and Format UI
 if (isLightMode) {
-  document.body.classList.add('light-mode');
+  document.body.classList.add(CSS_CLASSES.LIGHT_MODE);
   if (themeToggle) themeToggle.checked = true;
 }
 if (formatLabel) {
-  formatLabel.textContent = is24Hour ? '24H' : '12H';
+  formatLabel.textContent = is24Hour ? FORMAT_LABELS.H24 : FORMAT_LABELS.H12;
 }
 
 themeToggle?.addEventListener('change', () => {
   isLightMode = themeToggle.checked;
   setThemePreference(isLightMode);
-  document.body.classList.toggle('light-mode', isLightMode);
+  document.body.classList.toggle(CSS_CLASSES.LIGHT_MODE, isLightMode);
 });
 
 formatToggle?.addEventListener('click', () => {
   is24Hour = !is24Hour;
   setTimeFormatPreference(is24Hour);
-  if (formatLabel) formatLabel.textContent = is24Hour ? '24H' : '12H';
+  if (formatLabel) formatLabel.textContent = is24Hour ? FORMAT_LABELS.H24 : FORMAT_LABELS.H12;
   updateClockTick();
 });
 

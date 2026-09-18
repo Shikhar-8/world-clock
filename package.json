@@ -9,9 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.3",
     "playwright": "^1.63.0",
-    "tailwindcss": "^4.3.3",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   },

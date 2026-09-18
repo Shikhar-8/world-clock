@@ -1,9 +1,11 @@
+import { STORAGE_KEYS, THEME_VALUES, FORMAT_VALUES } from './constants.ts';
+
 /**
  * Retrieves the user's theme preference from local storage.
  * @returns True if the user prefers light mode, false otherwise
  */
 export function getThemePreference(): boolean {
-  return localStorage.getItem('theme') === 'light';
+  return localStorage.getItem(STORAGE_KEYS.THEME) === THEME_VALUES.LIGHT;
 }
 
 /**
@@ -11,7 +13,7 @@ export function getThemePreference(): boolean {
  * @param isLight True to save light mode, false for dark mode
  */
 export function setThemePreference(isLight: boolean): void {
-  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  localStorage.setItem(STORAGE_KEYS.THEME, isLight ? THEME_VALUES.LIGHT : THEME_VALUES.DARK);
 }
 
 /**
@@ -19,7 +21,7 @@ export function setThemePreference(isLight: boolean): void {
  * @returns True if the user prefers 24-hour time, false for 12-hour
  */
 export function getTimeFormatPreference(): boolean {
-  return localStorage.getItem('timeFormat') === '24h';
+  return localStorage.getItem(STORAGE_KEYS.TIME_FORMAT) === FORMAT_VALUES.H24;
 }
 
 /**
@@ -27,5 +29,5 @@ export function getTimeFormatPreference(): boolean {
  * @param is24Hour True for 24-hour format, false for 12-hour
  */
 export function setTimeFormatPreference(is24Hour: boolean): void {
-  localStorage.setItem('timeFormat', is24Hour ? '24h' : '12h');
+  localStorage.setItem(STORAGE_KEYS.TIME_FORMAT, is24Hour ? FORMAT_VALUES.H24 : FORMAT_VALUES.H12);
 }

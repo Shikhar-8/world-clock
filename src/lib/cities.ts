@@ -4,6 +4,8 @@ import { getUtcOffset } from './time.ts';
  * Searches the provided city database for a matching query string.
  * Matches against city name, country name, province name, or UTC offset.
  * Returns the top 5 unique results, sorted by descending population.
+ * FAILURE STATE: If the database is missing or the query is too short,
+ * returns an empty array `[]` which the UI interprets as "no results".
  * 
  * @param query The user's search string
  * @param cityTimezones The fully loaded city-timezones module data

@@ -13,6 +13,9 @@ const offsetCache = new Map<string, string>();
 /**
  * Calculates the standard UTC offset string for a given timezone (e.g., "UTC+9").
  * Caches results to optimize performance on repeated lookups.
+ * FAILURE STATE: If the timezone string is invalid or Intl fails to parse it, 
+ * returns an empty string ('') so the UI gracefully degrades without crashing.
+ * 
  * @param timezone The IANA timezone string (e.g. "Asia/Tokyo")
  * @returns A formatted UTC offset string
  */
