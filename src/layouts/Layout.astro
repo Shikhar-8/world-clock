@@ -1,0 +1,28 @@
+---
+import '../styles/app.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>World Clock</title>
+  </head>
+  <body class="font-base bg-bg-primary text-text-primary leading-[1.5] antialiased min-h-screen flex flex-col">
+    <!-- Background Ghost Type -->
+    <div id="ghost-type" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-ghost font-black text-ghost-text tracking-tight uppercase leading-none pointer-events-none select-none -z-10" aria-hidden="true">TIME</div>
+    
+    <!-- Initial Loader -->
+    <div id="loader" class="fixed inset-0 bg-bg-primary flex flex-col items-center justify-center z-50 transition-opacity duration-[800ms] ease-out-expo">
+      <div class="text-[2rem] font-black tracking-tight uppercase text-text-primary loader-logo">TIME</div>
+    </div>
+
+    <div id="app" class="max-w-app mx-auto py-app-padding-y px-app-padding-x w-full flex flex-col grow relative z-10">
+      <slot />
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 pointer-events-none" aria-live="assertive"></div>
+  </body>
+</html>

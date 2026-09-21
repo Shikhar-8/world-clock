@@ -11,14 +11,19 @@ export function showToast(message: string, type: 'error' | 'info' = 'error', dur
   if (!container) return;
 
   const toast = document.createElement('div');
-  toast.className = `toast toast-${type}`;
+  const baseToastClasses = 'bg-surface-primary text-text-primary px-[24px] py-[12px] rounded-[100px] font-base text-[0.875rem] font-medium tracking-wide shadow-[0_8px_24px_rgba(0,0,0,0.12)] border border-border-primary flex items-center gap-[10px] will-change-[transform,opacity]';
+  const errorToastClasses = 'border-error/30 shadow-[0_8px_24px_theme(--color-error/8%),0_0_0_1px_theme(--color-error/10%)]';
+  
+  toast.className = `toast ${baseToastClasses} ${type === 'error' ? errorToastClasses : ''}`;
 
   const iconSvg = type === 'error' 
     ? `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`
     : `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
 
+  const iconColorClass = type === 'error' ? 'text-error' : '';
+
   toast.innerHTML = `
-    <span class="toast-icon">${iconSvg}</span>
+    <span class="flex items-center justify-center ${iconColorClass}">${iconSvg}</span>
     <span class="toast-message">${message}</span>
   `;
 

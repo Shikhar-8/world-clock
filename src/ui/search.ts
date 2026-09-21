@@ -12,15 +12,13 @@ export function renderSuggestions(
   onHover: (index: number) => void
 ): void {
   suggestionsEl.innerHTML = '';
-  
   if (cities.length === 0) {
-    suggestionsEl.innerHTML = '<div class="no-results" role="option">City or UTC offset not found.</div>';
+    suggestionsEl.innerHTML = '<div class="py-suggestion-py px-suggestion-px text-text-muted text-no-results uppercase tracking-wide" role="option">City or UTC offset not found.</div>';
     return;
   }
-  
   cities.forEach((city: any, index: number) => {
     const item = document.createElement('div');
-    item.className = 'suggestion-item';
+    item.className = 'suggestion-item px-suggestion-px py-suggestion-py cursor-pointer text-suggestion font-medium transition-all duration-200 ease-spring will-change-transform hover:bg-surface-primary hover:text-accent [&.active]:bg-surface-primary [&.active]:text-accent';
     
     const prov = city.province ? `${city.province}, ` : '';
     item.textContent = `${city.city}, ${prov}${city.country}`;

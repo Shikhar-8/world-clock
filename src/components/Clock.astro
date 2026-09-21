@@ -1,0 +1,21 @@
+---
+// Clock.astro
+---
+<!-- 
+  Clock section wrapped in a relative container. 
+  JS controls visibility using .hidden on #clock-section. 
+  It translates the clock-section opacity/transform classes.
+-->
+<section id="clock-section" class="flex flex-col items-start opacity-100 translate-y-0 transition-all duration-500 ease-out-expo [&.hidden]:opacity-0 [&.hidden]:translate-y-[20px] [&.hidden]:pointer-events-none [&.hidden]:absolute [&.hidden]:invisible hidden" aria-live="polite">
+  <div id="date-display" class="text-date font-medium mb-date-mb text-text-dim tracking-wide">
+    <!-- E.g., Oct 24th -->
+  </div>
+
+  <div id="time-display" class="text-time font-extrabold leading-[0.9] tracking-tight tabular-nums flex items-baseline gap-time-gap text-text-primary max-[600px]:whitespace-nowrap">
+    <!-- E.g., 10:42:15 -->
+  </div>
+  
+  <h2 id="city-name" class="text-city font-semibold text-text-dim tracking-wide mt-city-mt">
+    <!-- E.g., London, UK • GMT+1 -->
+  </h2>
+</section>

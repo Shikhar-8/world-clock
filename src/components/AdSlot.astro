@@ -1,0 +1,17 @@
+---
+// AdSlot.astro
+---
+<!-- AdSense Compliance Container -->
+<div class="mt-ad-mt mb-ad-mb w-full flex flex-col items-center">
+  <div class="text-ad-label uppercase tracking-widest text-text-muted mb-2">
+    Advertisement
+  </div>
+  
+  <!-- 
+    CRITICAL: min-height is explicitly defined to prevent Cumulative Layout Shift (CLS) 
+    per Google Core Web Vitals requirements. DO NOT REMOVE.
+  -->
+  <div class="w-full max-w-ad min-h-[90px] md:min-h-[250px] bg-bg-primary border border-dashed border-border-primary flex items-center justify-center text-text-muted text-ad-slot pointer-events-none">
+    Ad Space
+  </div>
+</div>

@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Search from '../components/Search.astro';
+import Clock from '../components/Clock.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Header />
+  
+  <main class="grow flex flex-col gap-content-gap">
+    <div class="max-w-content w-full m-0 flex flex-col gap-content-gap">
+      <Search />
+      <Clock />
+    </div>
+  </main>
+  
+  <AdSlot />
+  <Footer />
+</Layout>
+
+<script>
+  // Bootstrap the application logic exactly as the original main.ts did
+  import { bootstrap } from '../ui/main';
+  
+  document.addEventListener('DOMContentLoaded', bootstrap);
+</script>

@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  /* ================== COLORS ================== */
+  --color-bg-primary: #080808;
+  --color-text-primary: #f0f0f0;
+  --color-text-muted: #707070;
+  --color-text-dim: #999999;
+  --color-accent: #e8e8e8;
+  
+  --color-surface-primary: #141414;
+  --color-surface-input: #111111;
+  
+  --color-border-primary: #2a2a2a;
+  --color-border-input: #333333;
+  
+  --color-ad-bg: #0d0d0d;
+  
+  --color-ghost-text: rgba(255, 255, 255, 0.02);
+  --color-search-focus-ring: rgba(232, 232, 232, 0.15);
+
+  --color-seo-gradient: linear-gradient(180deg, #999999 0%, #555555 100%);
+  --color-seo-text-fill: transparent;
+
+  /* ================ TYPOGRAPHY ================ */
+  --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  --tracking-tight: -0.05em;
+  --tracking-none: 0;
+  --tracking-normal: 0.02em;
+  --tracking-wide: 0.05em;
+  --tracking-widest: 0.1em;
+
+  --text-ghost: clamp(10rem, 30vw, 40rem);
+  --text-loader-logo: 2rem;
+  --text-logo: 1.5rem;
+  --text-format-btn: 0.75rem;
+  --text-search-input: 0.9rem;
+  --text-clear-btn: 0.7rem;
+  --text-suggestion: 1.2rem;
+  --text-no-results: 1rem;
+  --text-city: 1.5rem;
+  --text-time: clamp(3rem, 15vw, 11rem);
+  --text-time-meta: clamp(1rem, 4vw, 3rem);
+  --text-date: clamp(1.2rem, 5vw, 2rem);
+  --text-ad-label: 0.75rem;
+  --text-ad-slot: 0.875rem;
+  --text-footer-seo: 0.875rem;
+
+  /* ================== SPACING ================== */
+  --ease-spring: linear(
+    0, 0.416 12.5%, 0.741 24.3%, 0.954 36.3%, 1.056 46.5%, 
+    1.085 53.6%, 1.083 61.1%, 1.045 70%, 1.012 79.5%, 0.996 90.7%, 1
+  );
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --radius-pill: 999px;
+  --radius-switch: 34px;
+  --radius-dropdown: 8px;
+  --radius-circle: 50%;
+
+  --container-app: 1200px;
+  --container-content: 800px;
+  --container-ad: 728px;
+  --container-footer: 600px;
+  --container-search: 560px;
+
+  --spacing-app-padding-y: 2rem;
+  --spacing-app-padding-x: 1.5rem;
+  
+  --spacing-content-gap: 4rem;
+  --spacing-header-mb: 4rem;
+  
+  --spacing-tray-gap: 0.75rem;
+  --spacing-format-btn-py: 0.4rem;
+  --spacing-format-btn-px: 0.7rem;
+  
+  --spacing-search-container-px: 1.25rem;
+  --spacing-search-input-p: 0.75rem;
+  --spacing-clear-btn-p: 0.5rem;
+  
+  --spacing-suggestion-py: 1rem;
+  --spacing-suggestion-px: 1.5rem;
+  
+  --spacing-city-mt: 2rem;
+  --spacing-time-gap: 1rem;
+  --spacing-date-mb: 0.5rem;
+  
+  --spacing-ad-mt: 4rem;
+  --spacing-ad-mb: 2rem;
+  
+  --spacing-footer-pt: 2rem;
+}
+
+/* ================== LIGHT MODE OVERRIDES ================== */
+body.light-mode {
+  --color-bg-primary: #faf8f5;
+  --color-text-primary: #1a1a1a;
+  --color-text-muted: #8c8279;
+  --color-text-dim: #8c8279;
+  --color-accent: #8B0000;
+  
+  --color-surface-primary: #f0ede8;
+  --color-surface-input: #f0ede8;
+  
+  --color-border-primary: #e2ded6;
+  --color-border-input: #d4d0c8;
+  
+  --color-ad-bg: #f0ede8;
+  --color-error: #ff4a4a;
+  
+  --color-ghost-text: rgba(255, 255, 255, 0.02);
+  --color-search-focus-ring: rgba(139, 0, 0, 0.1);
+  
+  --color-seo-gradient: none;
+  --color-seo-text-fill: var(--color-text-muted);
+}
+
+/* ================== RESPONSIVE OVERRIDES ================== */
+@media (max-width: 600px) {
+  :root {
+    --text-logo: 1.25rem;
+    --text-format-btn: 0.65rem;
+    --text-city: clamp(1.1rem, 4.5vw, 1.5rem);
+    --text-time: clamp(3.5rem, 20vw, 11rem);
+    --text-time-meta: clamp(1.2rem, 5vw, 3rem);
+    --text-date: clamp(1.3rem, 6vw, 2rem);
+    --text-footer-seo: 0.8rem;
+
+    --spacing-app-padding-y: 1.5rem;
+    --spacing-app-padding-x: 1.25rem;
+    
+    --spacing-content-gap: 2rem;
+    --spacing-header-mb: 2rem;
+    
+    --spacing-tray-gap: 0.5rem;
+    --spacing-format-btn-py: 0.35rem;
+    --spacing-format-btn-px: 0.55rem;
+    
+    --spacing-city-mt: 1.25rem;
+    --spacing-time-gap: 0.25rem;
+    
+    --spacing-ad-mt: 2rem;
+    --spacing-footer-pt: 1.5rem;
+  }
+}
+
+/* No additional raw CSS rules here per strict TW4 guidelines */
+
+

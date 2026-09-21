@@ -15,7 +15,7 @@ export function renderClock(
   data: TimeData, 
   city: any
 ): void {
-  timeDisplayEl.innerHTML = `${data.hour}<span class="accent">:</span>${data.minute}<span class="accent">:</span>${data.second} <span class="time-meta">${data.dayPeriod}</span>`;
+  timeDisplayEl.innerHTML = `${data.hour}<span class="text-text-dim font-bold [-webkit-text-fill-color:var(--color-text-dim)]">:</span>${data.minute}<span class="text-text-dim font-bold [-webkit-text-fill-color:var(--color-text-dim)]">:</span>${data.second} <span class="text-time-meta font-semibold text-text-dim tracking-none [-webkit-text-fill-color:var(--color-text-dim)]">${data.dayPeriod}</span>`;
   dateDisplayEl.innerHTML = `${data.dateStr}${data.dayIndicator}`.trim();
   cityNameEl.innerHTML = `${city.city}, ${city.country} &bull; ${data.timeZoneName}`;
 }

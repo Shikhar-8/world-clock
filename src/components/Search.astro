@@ -1,0 +1,22 @@
+---
+// Search.astro
+---
+<section class="relative z-[100]">
+  <!-- Search Container matches .search-container -->
+  <div class="group relative max-w-search w-full flex items-center bg-surface-input rounded-pill px-search-container-px border border-border-input transition-all duration-300 ease focus-within:border-accent focus-within:shadow-[0_0_0_3px_var(--color-search-focus-ring)] max-[600px]:max-w-full">
+    
+    <svg class="w-[18px] h-[18px] text-text-muted shrink-0 transition-colors duration-300 ease-out-expo group-focus-within:text-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+    
+    <input type="text" id="city-input" class="grow bg-transparent border-none text-text-primary text-search-input font-medium p-search-input-p outline-none transition-opacity duration-300 ease-out-expo tracking-normal placeholder:text-text-muted placeholder:opacity-50 focus:opacity-80" placeholder="Search a city or UTC offset..." autocomplete="off" spellcheck="false" role="combobox" aria-expanded="false" aria-controls="suggestions" aria-autocomplete="list" />
+    
+    <button id="clear-search" class="bg-transparent border-none text-text-muted text-clear-btn font-bold tracking-wide p-clear-btn-p cursor-pointer transition-all duration-200 ease uppercase shrink-0 hidden hover:text-text-primary" aria-label="Clear search">CLEAR</button>
+    
+    <!-- Suggestions Dropdown matches .suggestions-dropdown -->
+    <div id="suggestions" class="absolute top-full left-0 right-0 bg-surface-primary border border-t-0 border-border-primary rounded-b-dropdown max-h-[300px] overflow-y-auto z-[9999] shadow-[0_16px_48px_rgba(0,0,0,0.25)] opacity-0 -translate-y-1 pointer-events-none transition-all duration-[300ms] ease-spring hidden [&:not(.hidden)]:opacity-100 [&:not(.hidden)]:translate-y-0 [&:not(.hidden)]:pointer-events-auto [&:not(.hidden)]:duration-200 [&:not(.hidden)]:ease-out-expo" role="listbox">
+      <!-- Dynamic JS will populate items here -->
+    </div>
+  </div>
+</section>
